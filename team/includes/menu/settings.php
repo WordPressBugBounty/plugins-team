@@ -4,12 +4,13 @@ if (! defined('ABSPATH')) exit;  // if direct access
 if (!(current_user_can('manage_options'))) exit;
 
 
-$current_tab = isset($_REQUEST['tab']) ? sanitize_text_field($_REQUEST['tab']) : 'general';
+$current_tab = isset($_REQUEST['tab']) ? sanitize_text_field(wp_unslash($_REQUEST['tab'])) : 'general';
 
 $team_settings_tab = array();
 
 $team_settings_tab[] = array(
     'id' => 'general',
+/* translators: Icon HTML */
     'title' => sprintf(__('%s General', 'team'), '<i class="fas fa-list-ul"></i>'),
     'priority' => 1,
     'active' => ($current_tab == 'general') ? true : false,
@@ -17,6 +18,7 @@ $team_settings_tab[] = array(
 
 $team_settings_tab[] = array(
     'id' => 'team_member',
+/* translators: Icon HTML */
     'title' => sprintf(__('%s Team member', 'team'), '<i class="fas fa-user-tag"></i>'),
     'priority' => 2,
     'active' => ($current_tab == 'team_member') ? true : false,
@@ -25,6 +27,7 @@ $team_settings_tab[] = array(
 
 $team_settings_tab[] = array(
     'id' => 'help_support',
+/* translators: Icon HTML */
     'title' => sprintf(__('%s Help & support', 'team'), '<i class="fas fa-hands-helping"></i>'),
     'priority' => 3,
     'active' => ($current_tab == 'help_support') ? true : false,
@@ -32,6 +35,7 @@ $team_settings_tab[] = array(
 
 $team_settings_tab[] = array(
     'id' => 'buy_pro',
+/* translators: Icon HTML */
     'title' => sprintf(__('%s Buy Pro', 'team'), '<i class="fas fa-store"></i>'),
     'priority' => 9,
     'active' => ($current_tab == 'buy_pro') ? true : false,
@@ -57,26 +61,28 @@ wp_enqueue_style('settings-tabs');
 wp_enqueue_script('settings-tabs');
 
 
-$review_status = isset($_GET['review_status']) ? sanitize_text_field($_GET['review_status']) : '';
+$review_status = isset($_GET['review_status']) ? sanitize_text_field(wp_unslash($_GET['review_status'])) : '';
 $team_plugin_info = get_option('team_plugin_info');
 $team_settings = get_option('team_settings');
 
 ?>
 <div class="wrap">
     <div id="icon-tools" class="icon32"><br></div>
-    <h2><?php echo sprintf(__('%s Settings', 'team'), team_plugin_name) ?></h2>
+    <h2><?php 
+/* translators: PLugin Name */
+echo esc_html(sprintf(__('%s Settings', 'team'), team_plugin_name)) ?></h2>
 
 
     <?php
     $gmt_offset = get_option('gmt_offset');
-    $current_date = date('Y-m-d H:i:s', strtotime('+' . $gmt_offset . ' hour'));
+    $current_date = gmdate('Y-m-d H:i:s', strtotime('+' . $gmt_offset . ' hour'));
     //echo '<pre>'.var_export($current_date, true).'</pre>';
 
 
     if ($review_status == 'remind_later'):
 
         $team_plugin_info['review_status'] = 'remind_later';
-        $team_plugin_info['remind_date'] = date('Y-m-d H:i:s', strtotime('+30 days'));
+        $team_plugin_info['remind_date'] = gmdate('Y-m-d H:i:s', strtotime('+30 days'));
 
 
     ?>
@@ -99,14 +105,14 @@ $team_settings = get_option('team_settings');
 
 
 
-    <form method="post" action="<?php echo str_replace('%7E', '~', esc_url_raw($_SERVER['REQUEST_URI'])); ?>">
+    <form method="post" action="<?php echo esc_url(str_replace('%7E', '~', esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])))); ?>">
         <input type="hidden" name="team_hidden" value="Y">
         <input type="hidden" name="tab" value="<?php echo esc_html($current_tab); ?>">
 
         <?php
         if (!empty($_POST['team_hidden'])) {
 
-            $nonce = sanitize_text_field($_POST['_wpnonce']);
+            $nonce = sanitize_text_field(wp_unslash($_POST['_wpnonce']));
 
             if (wp_verify_nonce($nonce, 'team_nonce') && $_POST['team_hidden'] == 'Y') {
 
@@ -114,7 +120,7 @@ $team_settings = get_option('team_settings');
 
         ?>
                 <div class="updated notice  is-dismissible">
-                    <p><strong><?php _e('Changes Saved.', 'team'); ?></strong></p>
+                    <p><strong><?php echo esc_html__('Changes Saved.', 'team'); ?></strong></p>
                 </div>
 
         <?php
@@ -165,7 +171,7 @@ $team_settings = get_option('team_settings');
                         <?php echo wp_kses_post($title); ?>
                         <?php
                         if ($is_pro):
-                        ?><span class="pro-feature"><?php echo $pro_text; ?></span> <?php
+                        ?><span class="pro-feature"><?php echo esc_html($pro_text); ?></span> <?php
                                                                                 endif;
                                                                                     ?>
 
@@ -204,7 +210,7 @@ $team_settings = get_option('team_settings');
             <div class="clear clearfix"></div>
             <p class="submit">
                 <?php wp_nonce_field('team_nonce'); ?>
-                <input class="button button-primary" type="submit" name="Submit" value="<?php _e('Save Changes', 'team'); ?>" />
+                <input class="button button-primary" type="submit" name="Submit" value="<?php echo esc_html__('Save Changes', 'team'); ?>" />
             </p>
 
         </div>

@@ -202,7 +202,7 @@ class class_team_functions  {
 				}
 			else
 				{
-				$taxonomy = sanitize_text_field($_POST['taxonomy']);
+				$taxonomy = isset($_POST['taxonomy']) ? sanitize_text_field(wp_unslash($_POST['taxonomy'])) : '';
 				}
 			
 			
@@ -217,7 +217,7 @@ class class_team_functions  {
 		
 		if(empty($categories))
 			{
-			echo __("No Items Found!",'team');
+			echo esc_html__("No Items Found!",'team');
 			}
 		
 		
@@ -254,27 +254,6 @@ class class_team_functions  {
 		{
 			
 			?>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=652982311485932";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<div class="fb-like" data-href="http://paratheme.com/items/team-responsive-meet-the-team-grid-for-wordpress" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-            
-            <br /><br />
-            <!-- Place this tag in your head or just before your close body tag. -->
-            <script src="https://apis.google.com/js/platform.js" async defer></script>
-            
-            <!-- Place this tag where you want the +1 button to render. -->
-            <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="300" data-href="<?php echo team_share_url; ?>"></div>
-            
-            <br />
-            <br />
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo team_share_url; ?>" data-text="<?php echo team_plugin_name; ?>" data-via="ParaTheme" data-hashtags="WordPress">Tweet</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 
 

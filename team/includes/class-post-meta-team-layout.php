@@ -42,6 +42,7 @@ class class_team_post_meta_team_layout
 
         $team_settings_tab[] = array(
             'id' => 'layout_builder',
+/* translators: Icon HTML */
             'title' => sprintf(__('%s Layout builder', 'team'), '<i class="fas fa-qrcode"></i>'),
             'priority' => 4,
             'active' => true,
@@ -50,6 +51,7 @@ class class_team_post_meta_team_layout
 
         $team_settings_tab[] = array(
             'id' => 'custom_scripts',
+/* translators: Icon HTML */
             'title' => sprintf(__('%s Custom scripts', 'team'), '<i class="far fa-building"></i>'),
             'priority' => 5,
             'active' => false,
@@ -138,7 +140,7 @@ class class_team_post_meta_team_layout
         if (!isset($_POST['team_nonce_check_value']))
             return $post_id;
 
-        $nonce = sanitize_text_field($_POST['team_nonce_check_value']);
+        $nonce = isset($_POST['team_nonce_check_value']) ? sanitize_text_field(wp_unslash($_POST['team_nonce_check_value'])) : '';
 
         // Verify that the nonce is valid.
         if (!wp_verify_nonce($nonce, 'team_nonce_check'))

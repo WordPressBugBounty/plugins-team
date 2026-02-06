@@ -33,19 +33,19 @@ if( ! class_exists( 'settings_tabs_reviews' ) ) {
 
             if(!current_user_can('manage_options')) return;
 
-            $nonce = isset($_GET['_wpnonce']) ? sanitize_text_field($_GET['_wpnonce']) : '';
+            $nonce = isset($_GET['_wpnonce']) ? sanitize_text_field(wp_unslash($_GET['_wpnonce'])) : '';
 
             if(wp_verify_nonce( $nonce, $this->option.'_review_notice' ) ) {
-                $review_status = isset($_GET['review_status']) ? sanitize_text_field($_GET['review_status']) : '';
+                $review_status = isset($_GET['review_status']) ? sanitize_text_field(wp_unslash($_GET['review_status'])) : '';
                 $option = get_option($this->option);
 
                 $gmt_offset = get_option('gmt_offset');
-                $current_date = date('Y-m-d H:i:s', strtotime('+'.$gmt_offset.' hour'));
+                $current_date = gmdate('Y-m-d H:i:s', strtotime('+'.$gmt_offset.' hour'));
 
                 if($review_status =='remind_later'):
 
                     $option['review_status'] = 'remind_later';
-                    $option['remind_date'] = date('Y-m-d H:i:s', strtotime('+30 days'));
+                    $option['remind_date'] = gmdate('Y-m-d H:i:s', strtotime('+30 days'));
 
                     ?>
                     <div class="update-nag is-dismissible">We will remind you later.</div>
@@ -86,7 +86,7 @@ if( ! class_exists( 'settings_tabs_reviews' ) ) {
 
 
             $gmt_offset = get_option('gmt_offset');
-            $today_date = date('Y-m-d H:i:s', strtotime('+'.$gmt_offset.' hour'));
+            $today_date = gmdate('Y-m-d H:i:s', strtotime('+'.$gmt_offset.' hour'));
 
 
 //            error_log($review_status);
@@ -100,7 +100,7 @@ if( ! class_exists( 'settings_tabs_reviews' ) ) {
 
             }else{
                 $option['review_status'] = 'remind_later';
-                $option['remind_date'] = date('Y-m-d H:i:s', strtotime('+7 days'));
+                $option['remind_date'] = gmdate('Y-m-d H:i:s', strtotime('+7 days'));
                 update_option($this->option, $option);
 
                 return;
@@ -111,18 +111,18 @@ if( ! class_exists( 'settings_tabs_reviews' ) ) {
                 <div class="actions">
                     <span title="To permanently hide please click on Already did." class="hide"><i class="fas fa-times"></i></span>
                 </div>
-                <div class="title"> <?php echo $this->title; ?></div>
+                <div class="title"> <?php echo esc_html($this->title); ?></div>
                 <div class="content">
                     <p class="">We wish your 2 minutes to write your feedback about our plugin. give us <span style="color: #ffae19"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></p>
 
-                    <a target="_blank" href="<?php echo $this->review_link; ?>" class="button"><i class="fab fa-wordpress"></i> Write a review</a>
-                    <a href="<?php echo wp_nonce_url($admin_url.'?review_status=done', $this->option.'_review_notice', '_wpnonce'); ?>" class="button"><i class="far fa-thumbs-up"></i> Already did</a>
-                    <a  href="<?php echo wp_nonce_url($admin_url.'?review_status=remind_later', $this->option.'_review_notice', '_wpnonce'); ?>" class="button"><i class="far fa-bell"></i> Remind me later</a>
+                    <a target="_blank" href="<?php echo esc_url($this->review_link); ?>" class="button"><i class="fab fa-wordpress"></i> Write a review</a>
+                    <a href="<?php echo esc_url(wp_nonce_url($admin_url.'?review_status=done', $this->option.'_review_notice', '_wpnonce')); ?>" class="button"><i class="far fa-thumbs-up"></i> Already did</a>
+                    <a  href="<?php echo esc_url(wp_nonce_url($admin_url.'?review_status=remind_later', $this->option.'_review_notice', '_wpnonce')); ?>" class="button"><i class="far fa-bell"></i> Remind me later</a>
 
                     <p>Do you have any issue, please contact our support team by creating a support ticket or please watch tutorials and documentation.</p>
-                    <a target="_blank" href="<?php echo $this->support_link; ?>" class="button"><i class="far fa-question-circle"></i> Create support ticket</a>
-                    <a target="_blank" href="<?php echo $this->documentation_link; ?>" class="button"><i class="far fa-file-code"></i> Documentation</a>
-                    <a target="_blank" href="<?php echo $this->tutorials_link; ?>" class="button"><i class="fab fa-youtube"></i> Tutorials</a>
+                    <a target="_blank" href="<?php echo esc_url($this->support_link); ?>" class="button"><i class="far fa-question-circle"></i> Create support ticket</a>
+                    <a target="_blank" href="<?php echo esc_url($this->documentation_link); ?>" class="button"><i class="far fa-file-code"></i> Documentation</a>
+                    <a target="_blank" href="<?php echo esc_url($this->tutorials_link); ?>" class="button"><i class="fab fa-youtube"></i> Tutorials</a>
                 </div>
 
 

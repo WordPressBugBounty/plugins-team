@@ -48,6 +48,7 @@ class class_team_post_meta_team
 
         $team_settings_tab[] = array(
             'id' => 'shortcodes',
+/* translators: Icon HTML */
             'title' => sprintf(__('%s Shortcodes', 'team'), '<i class="fas fa-code"></i>'),
             'priority' => 1,
             'active' => ($current_tab == 'shortcodes') ? true : false,
@@ -55,6 +56,7 @@ class class_team_post_meta_team
 
         $team_settings_tab[] = array(
             'id' => 'style',
+/* translators: Icon HTML */
             'title' => sprintf(__('%s Style', 'team'), '<i class="far fa-building"></i>'),
             'priority' => 2,
             'active' => ($current_tab == 'style') ? true : false,
@@ -62,6 +64,7 @@ class class_team_post_meta_team
 
         $team_settings_tab[] = array(
             'id' => 'query_member',
+/* translators: Icon HTML */
             'title' => sprintf(__('%s Query Member', 'team'), '<i class="fas fa-users-cog"></i>'),
             'priority' => 3,
             'active' => ($current_tab == 'query_member') ? true : false,
@@ -69,6 +72,7 @@ class class_team_post_meta_team
 
         $team_settings_tab[] = array(
             'id' => 'layouts',
+/* translators: Icon HTML */
             'title' => sprintf(__('%s Layouts', 'team'), '<i class="fas fa-qrcode"></i>'),
             'priority' => 4,
             'active' => ($current_tab == 'layouts') ? true : false,
@@ -76,6 +80,7 @@ class class_team_post_meta_team
 
         $team_settings_tab[] = array(
             'id' => 'masonry',
+/* translators: Icon HTML */
             'title' => sprintf(__('%s Masonry', 'team'), '<i class="fas fa-grip-vertical"></i>'),
             'priority' => 5,
             'active' => ($current_tab == 'masonry') ? true : false,
@@ -85,7 +90,8 @@ class class_team_post_meta_team
 
         $team_settings_tab[] = array(
             'id' => 'pagination',
-            'title' => sprintf(__('%s Pagination', 'team'), '<i class="fas fa-ellipsis-h"></i>'),
+/* translators: Icon HTML */
+                'title' => sprintf(__('%s Pagination', 'team'), '<i class="fas fa-ellipsis-h"></i>'),
             'priority' => 6,
             'active' => ($current_tab == 'pagination') ? true : false,
             'data_visible' => 'grid glossary filterable',
@@ -95,6 +101,7 @@ class class_team_post_meta_team
 
         $team_settings_tab[] = array(
             'id' => 'custom_scripts',
+/* translators: Icon HTML */
             'title' => sprintf(__('%s Custom scripts', 'team'), '<i class="fas fa-laptop-code"></i>'),
             'priority' => 90,
             'active' => ($current_tab == 'custom_scripts') ? true : false,
@@ -102,6 +109,7 @@ class class_team_post_meta_team
 
         $team_settings_tab[] = array(
             'id' => 'help_support',
+/* translators: Icon HTML */
             'title' => sprintf(__('%s Help & support', 'team'), '<i class="fas fa-hands-helping"></i>'),
             'priority' => 95,
             'active' => ($current_tab == 'help_support') ? true : false,
@@ -109,6 +117,7 @@ class class_team_post_meta_team
 
         $team_settings_tab[] = array(
             'id' => 'buy_pro',
+/* translators: Icon HTML */
             'title' => sprintf(__('%s Buy Pro', 'team'), '<i class="fas fa-store"></i>'),
             'priority' => 99,
             'active' => ($current_tab == 'buy_pro') ? true : false,
@@ -245,7 +254,7 @@ class class_team_post_meta_team
         if (!isset($_POST['team_nonce_check_value']))
             return $post_id;
 
-        $nonce = sanitize_text_field($_POST['team_nonce_check_value']);
+        $nonce = isset($_POST['team_nonce_check_value']) ? sanitize_text_field(wp_unslash($_POST['team_nonce_check_value'])) : '';
 
         // Verify that the nonce is valid.
         if (!wp_verify_nonce($nonce, 'team_nonce_check'))

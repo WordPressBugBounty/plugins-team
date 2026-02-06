@@ -15,8 +15,8 @@ function team_settings_content_general()
 
 ?>
     <div class="section">
-        <div class="section-title"><?php echo __('General', 'team'); ?></div>
-        <p class="description section-description"><?php echo __('Choose some general options.', 'team'); ?></p>
+        <div class="section-title"><?php echo esc_html__('General', 'team'); ?></div>
+        <p class="description section-description"><?php echo esc_html__('Choose some general options.', 'team'); ?></p>
 
         <?php
 
@@ -62,8 +62,8 @@ function team_settings_content_general()
         $args = array(
             'id'        => 'custom_meta_fields',
             'parent'        => 'team_settings',
-            'title'        => __('Custom meta fields', 'text-domain'),
-            'details'    => __('Custom meta fields on team member profile', 'text-domain'),
+            'title'        => __('Custom meta fields', 'team'),
+            'details'    => __('Custom meta fields on team member profile', 'team'),
             'collapsible' => true,
             'type'        => 'repeatable',
             'limit'        => 10,
@@ -134,8 +134,8 @@ function team_settings_content_general()
         $args = array(
             'id'        => 'custom_social_fields',
             'parent'        => 'team_settings',
-            'title'        => __('Custom social fields', 'text-domain'),
-            'details'    => __('Custom social fields on team member profile', 'text-domain'),
+            'title'        => __('Custom social fields', 'team'),
+            'details'    => __('Custom social fields on team member profile', 'team'),
             'collapsible' => true,
             'type'        => 'repeatable',
             'limit'        => 10,
@@ -174,8 +174,8 @@ function team_settings_content_team_member()
 
 ?>
     <div class="section">
-        <div class="section-title"><?php echo __('Single team member', 'team'); ?></div>
-        <p class="description section-description"><?php echo __('Choose some options for single team member page.', 'team'); ?></p>
+        <div class="section-title"><?php echo esc_html__('Single team member', 'team'); ?></div>
+        <p class="description section-description"><?php echo esc_html__('Choose some options for single team member page.', 'team'); ?></p>
 
 
         <?php
@@ -234,8 +234,8 @@ if (!function_exists('team_settings_content_help_support')) {
 
     ?>
         <div class="section">
-            <div class="section-title"><?php echo __('Get support', 'team'); ?></div>
-            <p class="description section-description"><?php echo __('Use following to get help and support from our expert team.', 'team'); ?></p>
+            <div class="section-title"><?php echo esc_html__('Get support', 'team'); ?></div>
+            <p class="description section-description"><?php echo esc_html__('Use following to get help and support from our expert team.', 'team'); ?></p>
 
             <?php
 
@@ -249,19 +249,19 @@ if (!function_exists('team_settings_content_help_support')) {
 
             <p><b>Team</b> provide some ready layouts to get started, please follow the steps bellow to import default layouts.</p>
 
-            <p><?php echo __('Import free layouts', 'team'); ?></p>
+            <p><?php echo esc_html__('Import free layouts', 'team'); ?></p>
 
 
 
-            <a class="button" href="<?php echo esc_url_raw($layouts_free_url); ?>"><?php echo __('Download XML', 'team'); ?></a>
+            <a class="button" href="<?php echo esc_url_raw($layouts_free_url); ?>"><?php echo esc_html__('Download XML', 'team'); ?></a>
 
             <p>Import manually</p>
 
             <ul>
-                <li>Step - 1: Go to <a href="<?php echo admin_url(); ?>import.php">import</a> menu and install & activate <b>WordPress</b> Importer plugin. click to "Install Now" button to install.</li>
+                <li>Step - 1: Go to <a href="<?php echo esc_url(admin_url()); ?>import.php">import</a> menu and install & activate <b>WordPress</b> Importer plugin. click to "Install Now" button to install.</li>
                 <li>Step - 2: Download following xml file by clicking button bellow, save the file on your local machine.</li>
-                <li>Step - 3: Go to importer page <a href="<?php echo admin_url(); ?>import.php?import=wordpress">Import WordPress</a> and chose the downloaded file and then click to <b>Upload file and import</b>.</li>
-                <li>Step - 4: Go to <a href="<?php echo admin_url(); ?>edit.php?post_type=team_layout">Team layouts</a> page to see imported layouts.</li>
+                <li>Step - 3: Go to importer page <a href="<?php echo esc_url(admin_url()); ?>import.php?import=wordpress">Import WordPress</a> and chose the downloaded file and then click to <b>Upload file and import</b>.</li>
+                <li>Step - 4: Go to <a href="<?php echo esc_url(admin_url()); ?>edit.php?post_type=team_layout">Team layouts</a> page to see imported layouts.</li>
             </ul>
 
 
@@ -276,9 +276,9 @@ if (!function_exists('team_settings_content_help_support')) {
 
                 if ($layouts_pro_url) :
             ?>
-                    <p><?php echo __('Import premium layouts', 'team'); ?></p>
+                    <p><?php echo esc_html__('Import premium layouts', 'team'); ?></p>
 
-                    <a class="button" href="<?php echo esc_url_raw($layouts_pro_url); ?>"><?php echo __('Download Pro XML', 'team'); ?></a>
+                    <a class="button" href="<?php echo esc_url_raw($layouts_pro_url); ?>"><?php echo esc_html__('Download Pro XML', 'team'); ?></a>
 
             <?php
                 endif;
@@ -307,7 +307,7 @@ if (!function_exists('team_settings_content_help_support')) {
             ob_start();
             ?>
             <ul>
-                <li>Step - 1: Go to Tools > <a href="<?php echo admin_url(); ?>export.php">Export</a> menu.</li>
+                <li>Step - 1: Go to Tools > <a href="<?php echo esc_url(admin_url()); ?>export.php">Export</a> menu.</li>
                 <li>Step - 2: Choose "Team layouts" post types from list.</li>
                 <li>Step - 3: Then click to "Download Export File' button.</li>
                 <li>Step - 4: Save the file on your local machine.</li>
@@ -337,14 +337,14 @@ if (!function_exists('team_settings_content_help_support')) {
             ob_start();
             ?>
 
-            <p><?php echo __('Ask question for free on our forum and get quick reply from our expert team members.', 'team'); ?></p>
-            <a class="button" href="https://www.pickplugins.com/create-support-ticket/"><?php echo __('Create support ticket', 'team'); ?></a>
+            <p><?php echo esc_html__('Ask question for free on our forum and get quick reply from our expert team members.', 'team'); ?></p>
+            <a class="button" href="https://www.pickplugins.com/create-support-ticket/"><?php echo esc_html__('Create support ticket', 'team'); ?></a>
 
-            <p><?php echo __('Read our documentation before asking your question.', 'team'); ?></p>
-            <a class="button" href="https://www.pickplugins.com/documentation/team/"><?php echo __('Documentation', 'team'); ?></a>
+            <p><?php echo esc_html__('Read our documentation before asking your question.', 'team'); ?></p>
+            <a class="button" href="https://www.pickplugins.com/documentation/team/"><?php echo esc_html__('Documentation', 'team'); ?></a>
 
-            <p><?php echo __('Watch video tutorials.', 'team'); ?></p>
-            <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy"><i class="fab fa-youtube"></i> <?php echo __('All tutorials', 'team'); ?></a>
+            <p><?php echo esc_html__('Watch video tutorials.', 'team'); ?></p>
+            <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy"><i class="fab fa-youtube"></i> <?php echo esc_html__('All tutorials', 'team'); ?></a>
 
             <ul>
                 <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=SOe0D-Og3nQ&list=PL0QP7T2SN94atYZswlnBMhDuIYoqlmlxy&index=1">How to install plugin & setup</a></li>
@@ -461,8 +461,8 @@ if (!function_exists('team_settings_content_buy_pro')) {
 
     ?>
         <div class="section">
-            <div class="section-title"><?php echo __('Get Premium', 'team'); ?></div>
-            <p class="description section-description"><?php echo __('Thanks for using our plugin, if you looking for some advance feature please buy premium version.', 'team'); ?></p>
+            <div class="section-title"><?php echo esc_html__('Get Premium', 'team'); ?></div>
+            <p class="description section-description"><?php echo esc_html__('Thanks for using our plugin, if you looking for some advance feature please buy premium version.', 'team'); ?></p>
 
             <?php
 
@@ -470,197 +470,197 @@ if (!function_exists('team_settings_content_buy_pro')) {
             ob_start();
             ?>
 
-            <p><?php echo __('If you love our plugin and want more feature please consider to buy pro version.', 'team'); ?></p>
-            <a class="button" href="https://pickplugins.com/team/?ref=dashobard"><?php echo __('Buy premium', 'team'); ?></a>
-            <a class="button" href="https://www.pickplugins.com/demo/team/?ref=dashobard"><?php echo __('See all demo', 'team'); ?></a>
+            <p><?php echo esc_html__('If you love our plugin and want more feature please consider to buy pro version.', 'team'); ?></p>
+            <a class="button" href="https://pickplugins.com/team/?ref=dashobard"><?php echo esc_html__('Buy premium', 'team'); ?></a>
+            <a class="button" href="https://www.pickplugins.com/demo/team/?ref=dashobard"><?php echo esc_html__('See all demo', 'team'); ?></a>
 
-            <h2><?php echo __('See the differences', 'team'); ?></h2>
+            <h2><?php echo esc_html__('See the differences', 'team'); ?></h2>
 
             <table class="pro-features">
                 <thead>
                     <tr>
-                        <th class="col-features"><?php echo __('Features', 'team'); ?></th>
-                        <th class="col-free"><?php echo __('Free', 'team'); ?></th>
-                        <th class="col-pro"><?php echo __('Premium', 'team'); ?></th>
+                        <th class="col-features"><?php echo esc_html__('Features', 'team'); ?></th>
+                        <th class="col-free"><?php echo esc_html__('Free', 'team'); ?></th>
+                        <th class="col-pro"><?php echo esc_html__('Premium', 'team'); ?></th>
                     </tr>
                 </thead>
 
                 <tr>
-                    <td class="col-features"><?php echo __('View type - Slider', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/slider/?ref=dashobard"><?php echo __('Demo', 'team'); ?></a></td>
+                    <td class="col-features"><?php echo esc_html__('View type - Slider', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/slider/?ref=dashobard"><?php echo esc_html__('Demo', 'team'); ?></a></td>
                     <td><i class="fas fa-times"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('View type - Filterable', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/filterable/?ref=dashobard"><?php echo __('Demo', 'team'); ?></a></td>
+                    <td class="col-features"><?php echo esc_html__('View type - Filterable', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/filterable/?ref=dashobard"><?php echo esc_html__('Demo', 'team'); ?></a></td>
                     <td><i class="fas fa-times"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
                 <tr>
-                    <td class="col-features"><?php echo __('View type - Glossary', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/glossary-custom-index/?ref=dashobard"><?php echo __('Demo', 'team'); ?></a></td>
-                    <td><i class="fas fa-times"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Access to layout library(30+ ready layout)', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/?ref=dashobard"><?php echo __('Demo', 'team'); ?></a></td>
+                    <td class="col-features"><?php echo esc_html__('View type - Glossary', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/glossary-custom-index/?ref=dashobard"><?php echo esc_html__('Demo', 'team'); ?></a></td>
                     <td><i class="fas fa-times"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Query by team members id', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Access to layout library(30+ ready layout)', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/?ref=dashobard"><?php echo esc_html__('Demo', 'team'); ?></a></td>
                     <td><i class="fas fa-times"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Pagination type - jQuery', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/?ref=dashobard"><?php echo __('Demo', 'team'); ?></a></td>
+                    <td class="col-features"><?php echo esc_html__('Query by team members id', 'team'); ?></td>
                     <td><i class="fas fa-times"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Pagination type - Ajax', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/ajax-pagination/?ref=dashobard"><?php echo __('Demo', 'team'); ?></a></td>
-                    <td><i class="fas fa-times"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-                <tr>
-                    <td class="col-features"><?php echo __('Pagination type - Load more', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/load-more/?ref=dashobard"><?php echo __('Demo', 'team'); ?></a></td>
+                    <td class="col-features"><?php echo esc_html__('Pagination type - jQuery', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/?ref=dashobard"><?php echo esc_html__('Demo', 'team'); ?></a></td>
                     <td><i class="fas fa-times"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Layout element - Skill', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/skill-bars/?ref=dashobard"><?php echo __('Demo', 'team'); ?></a></td>
+                    <td class="col-features"><?php echo esc_html__('Pagination type - Ajax', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/ajax-pagination/?ref=dashobard"><?php echo esc_html__('Demo', 'team'); ?></a></td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo esc_html__('Pagination type - Load more', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/load-more/?ref=dashobard"><?php echo esc_html__('Demo', 'team'); ?></a></td>
                     <td><i class="fas fa-times"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Team members link to - Popup box', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Layout element - Skill', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/skill-bars/?ref=dashobard"><?php echo esc_html__('Demo', 'team'); ?></a></td>
                     <td><i class="fas fa-times"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Team members link to - Popup slider', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Team members link to - Popup box', 'team'); ?></td>
                     <td><i class="fas fa-times"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Team members custom class', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Team members link to - Popup slider', 'team'); ?></td>
                     <td><i class="fas fa-times"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('View type - Grid', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/view-type-grid/?ref=dashobard"><?php echo __('Demo', 'team'); ?></a></td>
+                    <td class="col-features"><?php echo esc_html__('Team members custom class', 'team'); ?></td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo esc_html__('View type - Grid', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/view-type-grid/?ref=dashobard"><?php echo esc_html__('Demo', 'team'); ?></a></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
                 <tr>
-                    <td class="col-features"><?php echo __('Masonry style grid', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/masonry/?ref=dashobard"><?php echo __('Demo', 'team'); ?></a></td>
+                    <td class="col-features"><?php echo esc_html__('Masonry style grid', 'team'); ?> <a href="https://www.pickplugins.com/demo/team/masonry/?ref=dashobard"><?php echo esc_html__('Demo', 'team'); ?></a></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Item custom width', 'team'); ?> </td>
+                    <td class="col-features"><?php echo esc_html__('Item custom width', 'team'); ?> </td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Item margin', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Item margin', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Item text align', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Item text align', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Container style', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Container style', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Layout builder', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Layout builder', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Layout element - Wrapper start', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Layout element - Wrapper start', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Layout element - Wrapper end', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Layout element - Wrapper end', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Layout element - Thumbnail', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Layout element - Thumbnail', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
                 <tr>
-                    <td class="col-features"><?php echo __('Layout element - Title', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Layout element - Title', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
                 <tr>
-                    <td class="col-features"><?php echo __('Layout element - Position', 'team'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Layout element - Content', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Layout element - Position', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Layout element - Social', 'team'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-                <tr>
-                    <td class="col-features"><?php echo __('Layout element - Meta fields', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Layout element - Content', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Pagination type - Normal', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Layout element - Social', 'team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo esc_html__('Layout element - Meta fields', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Hide Pagination', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Pagination type - Normal', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Custom CSS', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Hide Pagination', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Custom JS', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Custom CSS', 'team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <td class="col-features"><?php echo esc_html__('Custom JS', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
@@ -668,42 +668,42 @@ if (!function_exists('team_settings_content_buy_pro')) {
 
 
                 <tr>
-                    <td class="col-features"><?php echo __('Hide featured image(Team member page)', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Hide featured image(Team member page)', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
                 <tr>
-                    <td class="col-features"><?php echo __('Hide post title(Team member page)', 'team'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-
-                <tr>
-                    <td class="col-features"><?php echo __('Custom team member slug', 'team'); ?></td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><i class="fas fa-check"></i></td>
-                </tr>
-                <tr>
-                    <td class="col-features"><?php echo __('Custom meta fields', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Hide post title(Team member page)', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <td class="col-features"><?php echo __('Custom social fields', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Custom team member slug', 'team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td class="col-features"><?php echo esc_html__('Custom meta fields', 'team'); ?></td>
                     <td><i class="fas fa-check"></i></td>
                     <td><i class="fas fa-check"></i></td>
                 </tr>
 
                 <tr>
-                    <th class="col-features"><?php echo __('Features', 'team'); ?></th>
-                    <th class="col-free"><?php echo __('Free', 'team'); ?></th>
-                    <th class="col-pro"><?php echo __('Premium', 'team'); ?></th>
+                    <td class="col-features"><?php echo esc_html__('Custom social fields', 'team'); ?></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+
+                <tr>
+                    <th class="col-features"><?php echo esc_html__('Features', 'team'); ?></th>
+                    <th class="col-free"><?php echo esc_html__('Free', 'team'); ?></th>
+                    <th class="col-pro"><?php echo esc_html__('Premium', 'team'); ?></th>
                 </tr>
                 <tr>
-                    <td class="col-features"><?php echo __('Buy now', 'team'); ?></td>
+                    <td class="col-features"><?php echo esc_html__('Buy now', 'team'); ?></td>
                     <td> </td>
-                    <td><a class="button" href="https://pickplugins.com/team/?ref=dashobard"><?php echo __('Buy premium', 'team'); ?></a></td>
+                    <td><a class="button" href="https://pickplugins.com/team/?ref=dashobard"><?php echo esc_html__('Buy premium', 'team'); ?></a></td>
                 </tr>
 
             </table>
@@ -791,6 +791,6 @@ add_action('team_settings_save', 'team_settings_save');
 function team_settings_save()
 {
 
-    $team_settings = isset($_POST['team_settings']) ?  team_recursive_sanitize_arr($_POST['team_settings']) : array();
+    $team_settings = isset($_POST['team_settings']) ?  team_recursive_sanitize_arr(wp_unslash($_POST['team_settings'])) : array();
     update_option('team_settings', $team_settings);
 }

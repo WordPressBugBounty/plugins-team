@@ -41,19 +41,30 @@ class team_class_post_types{
 					'name' 					=> $plural,
 					'singular_name' 		=> $singular,
 					'menu_name'             => __( 'Team Member', 'team' ),
+/* translators: %s: plural label */
 					'all_items'             => sprintf( __( 'All %s', 'team' ), $plural ),
 					'add_new' 				=> __( 'Add New', 'team' ),
+/* translators: %s: plural label */
 					'add_new_item' 			=> sprintf( __( 'Add %s', 'team' ), $singular ),
 					'edit' 					=> __( 'Edit', 'team' ),
+/* translators: %s: plural label */
 					'edit_item' 			=> sprintf( __( 'Edit %s', 'team' ), $singular ),
+/* translators: %s: plural label */
 					'new_item' 				=> sprintf( __( 'New %s', 'team' ), $singular ),
+/* translators: %s: plural label */
 					'view' 					=> sprintf( __( 'View %s', 'team' ), $singular ),
+/* translators: %s: plural label */
 					'view_item' 			=> sprintf( __( 'View %s', 'team' ), $singular ),
+/* translators: %s: plural label */
 					'search_items' 			=> sprintf( __( 'Search %s', 'team' ), $plural ),
+/* translators: %s: plural label */
 					'not_found' 			=> sprintf( __( 'No %s found', 'team' ), $plural ),
+/* translators: %s: plural label */
 					'not_found_in_trash' 	=> sprintf( __( 'No %s found in trash', 'team' ), $plural ),
+/* translators: %s: plural label */
 					'parent' 				=> sprintf( __( 'Parent %s', 'team' ), $singular )
 				),
+/* translators: %s: plural label */
 				'description' => sprintf( __( 'This is where you can create and manage %s.', 'team' ), $plural ),
 				'public' 				=> true,
 				'show_ui' 				=> true,
@@ -86,13 +97,21 @@ class team_class_post_types{
 						'name'              => $plural,
 						'singular_name'     => $singular,
 						'menu_name'         => ucwords( $plural ),
+/* translators: %s: plural label */
 						'search_items'      => sprintf( __( 'Search %s', 'team' ), $plural ),
+/* translators: %s: plural label */
 						'all_items'         => sprintf( __( 'All %s', 'team' ), $plural ),
+/* translators: %s: plural label */
 						'parent_item'       => sprintf( __( 'Parent %s', 'team' ), $singular ),
+/* translators: %s: plural label */
 						'parent_item_colon' => sprintf( __( 'Parent %s:', 'team' ), $singular ),
+/* translators: %s: plural label */
 						'edit_item'         => sprintf( __( 'Edit %s', 'team' ), $singular ),
+/* translators: %s: plural label */
 						'update_item'       => sprintf( __( 'Update %s', 'team' ), $singular ),
+/* translators: %s: plural label */
 						'add_new_item'      => sprintf( __( 'Add New %s', 'team' ), $singular ),
+/* translators: %s: plural label */
 						'new_item_name'     => sprintf( __( 'New %s Name', 'team' ),  $singular )
 	            	),
 		            'show_ui' 				=> true,
@@ -125,20 +144,31 @@ class team_class_post_types{
 				'labels' => array(
 					'name' 					=> $plural,
 					'singular_name' 		=> $singular,
-					'menu_name'             => __( $singular, 'team' ),
+					'menu_name'             =>$singular,
+/* translators: %s: plural label */
 					'all_items'             => sprintf( __( 'All %s', 'team' ), $plural ),
 					'add_new' 				=> __( 'Add New', 'team' ),
+/* translators: %s: plural label */
 					'add_new_item' 			=> sprintf( __( 'Add %s', 'team' ), $singular ),
 					'edit' 					=> __( 'Edit', 'team' ),
+/* translators: %s: plural label */
 					'edit_item' 			=> sprintf( __( 'Edit %s', 'team' ), $singular ),
+/* translators: %s: plural label */
 					'new_item' 				=> sprintf( __( 'New %s', 'team' ), $singular ),
+/* translators: %s: plural label */
 					'view' 					=> sprintf( __( 'View %s', 'team' ), $singular ),
+/* translators: %s: plural label */
 					'view_item' 			=> sprintf( __( 'View %s', 'team' ), $singular ),
+/* translators: %s: plural label */
 					'search_items' 			=> sprintf( __( 'Search %s', 'team' ), $plural ),
+/* translators: %s: plural label */
 					'not_found' 			=> sprintf( __( 'No %s found', 'team' ), $plural ),
+/* translators: %s: plural label */
 					'not_found_in_trash' 	=> sprintf( __( 'No %s found in trash', 'team' ), $plural ),
+/* translators: %s: plural label */
 					'parent' 				=> sprintf( __( 'Parent %s', 'team' ), $singular )
 				),
+/* translators: %s: plural label */
 				'description' => sprintf( __( 'This is where you can create and manage %s.', 'team' ), $plural ),
 				'public' 				=> true,
 				'show_ui' 				=> true,
@@ -170,20 +200,31 @@ class team_class_post_types{
                 'labels' => array(
                     'name' 					=> $plural,
                     'singular_name' 		=> $singular,
-                    'menu_name'             => __( $singular, 'team' ),
+                    'menu_name'             => $singular,
+/* translators: %s: plural label */
                     'all_items'             => sprintf( __( 'All %s', 'team' ), $plural ),
                     'add_new' 				=> __( 'Add New', 'team' ),
+/* translators: %s: plural label */
                     'add_new_item' 			=> sprintf( __( 'Add %s', 'team' ), $singular ),
                     'edit' 					=> __( 'Edit', 'team' ),
+/* translators: %s: plural label */
                     'edit_item' 			=> sprintf( __( 'Edit %s', 'team' ), $singular ),
+/* translators: %s: plural label */
                     'new_item' 				=> sprintf( __( 'New %s', 'team' ), $singular ),
+/* translators: %s: plural label */
                     'view' 					=> sprintf( __( 'View %s', 'team' ), $singular ),
+/* translators: %s: plural label */
                     'view_item' 			=> sprintf( __( 'View %s', 'team' ), $singular ),
+/* translators: %s: plural label */
                     'search_items' 			=> sprintf( __( 'Search %s', 'team' ), $plural ),
+/* translators: %s: plural label */
                     'not_found' 			=> sprintf( __( 'No %s found', 'team' ), $plural ),
+/* translators: %s: plural label */
                     'not_found_in_trash' 	=> sprintf( __( 'No %s found in trash', 'team' ), $plural ),
+/* translators: %s: plural label */
                     'parent' 				=> sprintf( __( 'Parent %s', 'team' ), $singular )
                 ),
+/* translators: %s: plural label */
                 'description' => sprintf( __( 'This is where you can create and manage %s.', 'team' ), $plural ),
                 'public' 				=> false,
                 'show_ui' 				=> true,

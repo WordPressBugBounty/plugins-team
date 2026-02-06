@@ -32,8 +32,8 @@ if (!function_exists('team_layout_metabox_content_custom_scripts')) {
 
 ?>
         <div class="section">
-            <div class="section-title"><?php echo __('Custom scripts', 'team'); ?></div>
-            <p class="description section-description"><?php echo __('Write custom scripts to override CSS and scripts.', 'team'); ?></p>
+            <div class="section-title"><?php echo esc_html__('Custom scripts', 'team'); ?></div>
+            <p class="description section-description"><?php echo esc_html__('Write custom scripts to override CSS and scripts.', 'team'); ?></p>
 
 
             <?php
@@ -41,7 +41,8 @@ if (!function_exists('team_layout_metabox_content_custom_scripts')) {
                 'id'        => 'custom_css',
                 'parent'        => 'custom_scripts',
                 'title'        => __('Custom CSS', 'team'),
-                'details'    => __('Write custom CSS to override default style, do not use <code>&lt;style>&lt;/style></code> tag. use <code>__ID__</code> to replace by layout id <code>layout-' . $post_id . '</code>.', 'team'),
+/* translators: %s: Post ID */
+                'details'    => sprintf(esc_html__('Write custom CSS to override default style, do not use <code>&lt;style>&lt;/style></code> tag. use <code>__ID__</code> to replace by layout id <code>layout-%s</code>.', 'team'),$post_id),
                 'type'        => 'scripts_css',
                 'value'        => $custom_css,
                 'default'        => '',
@@ -112,8 +113,8 @@ if (!function_exists('team_layout_metabox_content_layout_builder')) {
 
     ?>
         <div class="section">
-            <div class="section-title"><?php echo __('Layout builder', 'team'); ?></div>
-            <p class="description section-description"><?php echo __('Customize layout settings.', 'team'); ?></p>
+            <div class="section-title"><?php echo esc_html__('Layout builder', 'team'); ?></div>
+            <p class="description section-description"><?php echo esc_html__('Customize layout settings.', 'team'); ?></p>
 
             <?php
             $layout_elements['wrapper_start'] = array('name' => __('Wrapper start', 'team'));
@@ -197,7 +198,9 @@ if (!function_exists('team_layout_metabox_content_layout_builder')) {
                     else:
                     ?>
                         <div class="empty-element">
-                            <?php echo sprintf(__('%s Click to add tags.', 'team'), '<i class="far fa-hand-point-up"></i>') ?>
+                            <?php 
+/* translators: %s: Icon HTML */
+echo sprintf(esc_html__('%s Click to add tags.', 'team'), '<i class="far fa-hand-point-up"></i>') ?>
                         </div>
                     <?php
                     endif;
@@ -310,7 +313,7 @@ if (!function_exists('team_layout_metabox_content_layout_builder')) {
 
             <style type="text/css">
                 .layout-preview {
-                    background: url(<?php echo team_plugin_url; ?>assets/admin/css/tile.png);
+                    background: url(<?php echo esc_url(team_plugin_url.'assets/admin/css/tile.png'); ?>);
                     padding: 20px;
                 }
 
@@ -326,7 +329,7 @@ if (!function_exists('team_layout_metabox_content_layout_builder')) {
 
                 <?php
 
-                echo str_replace('__ID__', 'layout-' . $item_layout_id, $custom_css);
+                echo esc_html(str_replace('__ID__', 'layout-' . $item_layout_id, $custom_css));
 
                 ?>
             </style>
@@ -371,12 +374,12 @@ add_action('team_layout_meta_box_save_team', 'team_layout_meta_box_save_team');
 function team_layout_meta_box_save_team($job_id)
 {
 
-    $layout_options = isset($_POST['layout_options']) ? team_recursive_sanitize_arr($_POST['layout_options']) : '';
+    $layout_options = isset($_POST['layout_options']) ? team_recursive_sanitize_arr(wp_unslash($_POST['layout_options'])) : '';
     update_post_meta($job_id, 'layout_options', $layout_options);
 
-    $layout_elements_data = isset($_POST['layout_elements_data']) ? team_recursive_sanitize_arr($_POST['layout_elements_data']) : '';
+    $layout_elements_data = isset($_POST['layout_elements_data']) ? team_recursive_sanitize_arr(wp_unslash($_POST['layout_elements_data'])) : '';
     update_post_meta($job_id, 'layout_elements_data', $layout_elements_data);
 
-    $custom_scripts = isset($_POST['custom_scripts']) ? team_recursive_sanitize_arr($_POST['custom_scripts']) : '';
+    $custom_scripts = isset($_POST['custom_scripts']) ? team_recursive_sanitize_arr(wp_unslash($_POST['custom_scripts'])) : '';
     update_post_meta($job_id, 'custom_scripts', $custom_scripts);
 }

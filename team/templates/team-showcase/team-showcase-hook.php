@@ -192,9 +192,9 @@ function team_showcase_main_custom_scripts($args)
             width: 100%
         }
 
-        <?php echo '#team-' . $team_id; ?> {
+        <?php echo '#team-' . esc_attr($team_id); ?> {
             background: <?php echo esc_attr($container_background_color); ?> url(<?php echo esc_url_raw($container_background_img_url); ?>) repeat scroll 0 0;
-            text-align: <?php echo $container_text_align; ?>;
+            text-align: <?php echo esc_attr($container_text_align); ?>;
         }
 
         <?php echo '#team-' . esc_attr($team_id) . ' .item'; ?> {
@@ -235,13 +235,13 @@ function team_showcase_main_custom_scripts($args)
         }
 
         <?php endif; ?><?php
-                        echo $custom_css;
-                        echo str_replace('__ID__', 'layout-' . $item_layout_id, $layout_custom_css);
+                        echo esc_html($custom_css);
+                        echo esc_html(str_replace('__ID__', 'layout-' . $item_layout_id, $layout_custom_css));
 
                         ?>
     </style>
     <script>
-        <?php echo $custom_js;; ?>
+        <?php echo esc_js($custom_js); ?>
     </script>
     <?php
 
@@ -333,12 +333,12 @@ function team_showcase_before_items_pagination($wp_query, $args)
         <?php
 
         $big = 999999999; // need an unlikely integer
-        echo paginate_links(array(
+        echo wp_kses_post(paginate_links(array(
             'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
             'format' => '?paged=%#%',
             'current' => max(1, $paged),
             'total' => $wp_query->max_num_pages
-        ));
+        )));
 
         ?>
     </div>
@@ -401,12 +401,12 @@ function team_showcase_after_items_pagination($wp_query, $args)
         <?php
 
         $big = 999999999; // need an unlikely integer
-        echo paginate_links(array(
+        echo wp_kses_post(paginate_links(array(
             'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
             'format' => '?paged=%#%',
             'current' => max(1, $paged),
             'total' => $wp_query->max_num_pages
-        ));
+        )));
 
         ?>
     </div>

@@ -21,7 +21,7 @@ function team_layout_element_title($args)
     $element_class = apply_filters('team_layout_element_title_class', $element_class, $args);
 
 ?>
-    <div class="team-title <?php echo $element_class; ?>"><?php echo $post_title; ?></div>
+    <div class="team-title <?php echo esc_attr($element_class); ?>"><?php echo wp_kses_post($post_title); ?></div>
     <?php
 
 }
@@ -61,13 +61,13 @@ function team_layout_element_thumbnail($args)
 
     if (!empty($member_image_url)) {
     ?>
-        <div class="team-thumb <?php echo $element_class; ?>">
+        <div class="team-thumb <?php echo esc_attr($element_class); ?>">
             <?php if (!empty($team_member_url)): ?>
-                <a href="<?php echo $team_member_url; ?>">
-                    <img src="<?php echo $member_image_url; ?>" />
+                <a href="<?php echo esc_url($team_member_url); ?>">
+                    <img src="<?php echo esc_url($member_image_url); ?>" />
                 </a>
             <?php else: ?>
-                <img src="<?php echo $member_image_url; ?>" />
+                <img src="<?php echo esc_url($member_image_url); ?>" />
 
             <?php endif; ?>
 
@@ -101,7 +101,7 @@ function team_layout_element_position($args)
     //$team_member_position = get_post_meta($team_member_id,'position', true);
 
     ?>
-    <div class="team-position <?php echo $element_class; ?>"><?php echo $position; ?></div>
+    <div class="team-position <?php echo esc_attr($element_class); ?>"><?php echo wp_kses_post($position); ?></div>
 <?php
 
 }
@@ -131,7 +131,7 @@ function team_layout_element_meta($args)
     //$team_member_position = get_post_meta($team_member_id,'position', true);
 
 ?>
-    <div class="team-meta <?php echo $element_class; ?>"><?php echo $meta_key_value; ?></div>
+    <div class="team-meta <?php echo esc_attr($element_class); ?>"><?php echo wp_kses_post($meta_key_value); ?></div>
     <?php
 
 }
@@ -195,27 +195,27 @@ function team_layout_element_social($args)
 
                 $field_link = apply_filters('team_social_link', $field, $fieldIndex);
     ?>
-                <span class="<?php echo $social_icon_type; ?>">
-                    <a href="<?php echo esc_html($field_link); ?>">
+                <span class="<?php echo esc_attr($social_icon_type); ?>">
+                    <a href="<?php echo esc_url($field_link); ?>">
                         <?php
                         if ($social_icon_type == 'image_icon'):
 
                             if (!empty($field_icon)):
-                        ?><img src="<?php echo esc_html($field_icon); ?>"><?php
-                                                                                endif;
+                        ?><img src="<?php echo esc_url($field_icon); ?>"><?php
+                                                                        endif;
 
-                                                                            elseif ($social_icon_type == 'font_icon'):
+                                                                    elseif ($social_icon_type == 'font_icon'):
 
-                                                                                if (!empty($field_font_icon)):
-                                                                                    ?><?php echo esc_html($field_font_icon); ?><?php
-                                                                                endif;
+                                                                        if (!empty($field_font_icon)):
+                                                                            ?><?php echo wp_kses_post($field_font_icon); ?><?php
+                                                                                                                        endif;
 
-                                                                            elseif ($social_icon_type == 'text_link'):
+                                                                                                                    elseif ($social_icon_type == 'text_link'):
 
-                                                                            ?><?php echo esc_html($field_font_icon); ?> <?php echo esc_html($field); ?><?php
-                                                                                                    endif;
+                                                                                                                            ?><?php echo wp_kses_post($field_font_icon); ?> <?php echo esc_html($field); ?><?php
+                                                                                                                                                                                                        endif;
 
-                                                                                                        ?></a>
+                                                                                                                                                                                                            ?></a>
                 </span>
     <?php
             endif;
@@ -228,7 +228,7 @@ function team_layout_element_social($args)
     $html = ob_get_clean();
 
     ?>
-    <div class="team-social <?php echo $element_class; ?>"><?php echo $html; ?></div>
+    <div class="team-social <?php echo esc_attr($element_class); ?>"><?php echo wp_kses_post($html); ?></div>
 
     <style type="text/css">
         .team-social {
@@ -236,8 +236,8 @@ function team_layout_element_social($args)
         }
 
         .team-social a {
-            font-size: <?php echo $social_icon_font_size; ?>;
-            color: <?php echo $social_icon_color; ?>;
+            font-size: <?php echo esc_attr($social_icon_font_size); ?>;
+            color: <?php echo esc_attr($social_icon_color); ?>;
         }
 
         .team-social .text_link {
@@ -249,8 +249,8 @@ function team_layout_element_social($args)
         }
 
         .team-social a img {
-            width: <?php echo $social_icon_width; ?>;
-            height: <?php echo $social_icon_height; ?>;
+            width: <?php echo esc_attr($social_icon_width); ?>;
+            height: <?php echo esc_attr($social_icon_height); ?>;
             display: inline-block !important;
             border-radius: 0;
             box-shadow: none;
@@ -321,7 +321,7 @@ function team_layout_element_content($args)
 
 
 ?>
-    <div class="team-content <?php echo $element_class; ?>"><?php echo $content_html; ?></div>
+    <div class="team-content <?php echo esc_attr($element_class); ?>"><?php echo wp_kses_post($content_html); ?></div>
 <?php
 
 }
@@ -346,7 +346,7 @@ function team_layout_element_wrapper_start($args)
 
 
 ?>
-    <div class="<?php echo $wrapper_class; ?> <?php echo $element_class; ?>" id="<?php echo $wrapper_id; ?>">
+    <div class="<?php echo esc_attr($wrapper_class); ?> <?php echo esc_attr($element_class); ?>" id="<?php echo esc_attr($wrapper_id); ?>">
     <?php
 
 }
@@ -392,11 +392,11 @@ function team_layout_element_css_title($args)
 
 ?>
     <style type="text/css">
-        .layout-<?php echo $layout_id; ?>.element-<?php echo esc_attr($element_index); ?> {
-            color: <?php echo $color; ?>;
-            font-size: <?php echo $font_size; ?>;
-            font-family: <?php echo $font_family; ?>;
-            margin: <?php echo $margin; ?>;
+        <?php echo esc_attr('.layout-' . $layout_id); ?><?php echo esc_attr(' .element-' . $element_index); ?> {
+            color: <?php echo esc_attr($color); ?>;
+            font-size: <?php echo esc_attr($font_size); ?>;
+            font-family: <?php echo esc_attr($font_family); ?>;
+            margin: <?php echo esc_attr($margin); ?>;
 
         }
     </style>
@@ -422,11 +422,11 @@ function team_layout_element_css_position($args)
 
 ?>
     <style type="text/css">
-        .layout-<?php echo $layout_id; ?>.element-<?php echo esc_attr($element_index); ?> {
-            color: <?php echo $color; ?>;
-            font-size: <?php echo $font_size; ?>;
-            font-family: <?php echo $font_family; ?>;
-            margin: <?php echo $margin; ?>;
+        <?php echo esc_attr('.layout-' . $layout_id); ?><?php echo esc_attr(' .element-' . $element_index); ?> {
+            color: <?php echo esc_attr($color); ?>;
+            font-size: <?php echo esc_attr($font_size); ?>;
+            font-family: <?php echo esc_attr($font_family); ?>;
+            margin: <?php echo esc_attr($margin); ?>;
 
         }
     </style>
@@ -451,11 +451,11 @@ function team_layout_element_css_meta($args)
 
 ?>
     <style type="text/css">
-        .layout-<?php echo $layout_id; ?>.element-<?php echo esc_attr($element_index); ?> {
-            color: <?php echo $color; ?>;
-            font-size: <?php echo $font_size; ?>;
-            font-family: <?php echo $font_family; ?>;
-            margin: <?php echo $margin; ?>;
+        <?php echo esc_attr('.layout-' . $layout_id); ?><?php echo esc_attr(' .element-' . $element_index); ?> {
+            color: <?php echo esc_attr($color); ?>;
+            font-size: <?php echo esc_attr($font_size); ?>;
+            font-family: <?php echo esc_attr($font_family); ?>;
+            margin: <?php echo esc_attr($margin); ?>;
 
         }
     </style>
@@ -499,16 +499,16 @@ function team_layout_element_css_content($args)
 
 ?>
     <style type="text/css">
-        .layout-<?php echo $layout_id; ?>.element-<?php echo esc_attr($element_index); ?> {
-            color: <?php echo $color; ?>;
-            font-size: <?php echo $font_size; ?>;
-            font-family: <?php echo $font_family; ?>;
-            margin: <?php echo $margin; ?>;
+        <?php echo esc_attr('.layout-' . $layout_id); ?><?php echo esc_attr(' .element-' . $element_index); ?> {
+            color: <?php echo esc_attr($color); ?>;
+            font-size: <?php echo esc_attr($font_size); ?>;
+            font-family: <?php echo esc_attr($font_family); ?>;
+            margin: <?php echo esc_attr($margin); ?>;
 
         }
 
-        .layout-<?php echo $layout_id; ?>.element-<?php echo esc_attr($element_index); ?>a {
-            color: <?php echo $read_more_color; ?>;
+        <?php echo esc_attr('.layout-' . $layout_id); ?><?php echo esc_attr(' .element-' . $element_index); ?>a {
+            color: <?php echo esc_attr($read_more_color); ?>;
 
         }
     </style>
@@ -536,28 +536,28 @@ function team_layout_element_css_thumbnail($args)
 
 ?>
     <style type="text/css">
-        .layout-<?php echo $layout_id; ?>.element-<?php echo esc_attr($element_index); ?> {
+        <?php echo esc_attr('.layout-' . $layout_id); ?><?php echo esc_attr(' .element-' . $element_index); ?> {
             overflow: hidden;
-            margin: <?php echo $margin; ?>;
+            margin: <?php echo esc_attr($margin); ?>;
         }
 
         @media only screen and (min-width: 1024px) {
-            .layout-<?php echo $layout_id; ?>.element-<?php echo esc_attr($element_index); ?> {
-                <?php if (!empty($thumb_height_large)): ?>max-height: <?php echo $thumb_height_large; ?>;
+            <?php echo esc_attr('.layout-' . $layout_id); ?><?php echo esc_attr(' .element-' . $element_index); ?> {
+                <?php if (!empty($thumb_height_large)): ?>max-height: <?php echo esc_attr($thumb_height_large); ?>;
                 <?php endif; ?>
             }
         }
 
         @media only screen and (min-width: 768px) and (max-width: 1023px) {
-            .layout-<?php echo $layout_id; ?>.element-<?php echo esc_attr($element_index); ?> {
-                <?php if (!empty($thumb_height_medium)): ?>max-height: <?php echo $thumb_height_medium; ?>;
+            <?php echo esc_attr('.layout-' . $layout_id); ?><?php echo esc_attr(' .element-' . $element_index); ?> {
+                <?php if (!empty($thumb_height_medium)): ?>max-height: <?php echo esc_attr($thumb_height_medium); ?>;
                 <?php endif; ?>
             }
         }
 
         @media only screen and (min-width: 0px) and (max-width: 767px) {
-            .layout-<?php echo $layout_id; ?>.element-<?php echo esc_attr($element_index); ?> {
-                <?php if (!empty($thumb_height_small)): ?>max-height: <?php echo $thumb_height_small; ?>;
+            <?php echo esc_attr('.layout-' . $layout_id); ?><?php echo esc_attr(' .element-' . $element_index); ?> {
+                <?php if (!empty($thumb_height_small)): ?>max-height: <?php echo esc_attr($thumb_height_small); ?>;
                 <?php endif; ?>
             }
         }

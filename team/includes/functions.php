@@ -198,7 +198,7 @@ function team_member_posts_thumb_display($column, $post_id)
         //var_dump($member_image_id);
 
         if (!empty($member_image_url))
-            echo '<img width="40px"  src="' . $member_image_url . '">';
+            echo '<img width="40px"  src="' . esc_url($member_image_url) . '">';
     }
 }
 
@@ -219,9 +219,9 @@ function team_posts_shortcode_display($column, $post_id)
 {
     if ($column == 'shortcode') {
     ?>
-        <input style="background:#bfefff" type="text" onClick="this.select();" value="[team <?php echo 'id=&quot;' . $post_id . '&quot;'; ?>]" /><br />
+        <input style="background:#bfefff" type="text" onClick="this.select();" value="[team <?php echo 'id=&quot;' . esc_attr($post_id) . '&quot;'; ?>]" /><br />
         <textarea cols="50" rows="1" style="background:#bfefff" onClick="this.select();"><?php echo '<?php echo do_shortcode("[team id=';
-                                                                                            echo "'" . $post_id . "']";
+                                                                                            echo "'" . esc_attr($post_id) . "']";
                                                                                             echo '"); ?>'; ?></textarea>
 <?php
 

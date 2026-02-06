@@ -254,7 +254,7 @@ function team_cron_upgrade_team()
             $team_title = get_the_title();
             $team_options = array();
 
-            echo $team_title . '<br/>';
+            echo esc_html($team_title) . '<br/>';
 
 
 
@@ -559,7 +559,6 @@ function team_cron_upgrade_team()
 
 
 
-            wp_reset_query();
             wp_reset_postdata();
         endwhile;
     else :
@@ -608,7 +607,6 @@ function team_cron_reset_migrate()
         endwhile;
 
         wp_reset_postdata();
-        wp_reset_query();
     endif;
 
 
@@ -634,7 +632,6 @@ function team_cron_reset_migrate()
 
         endwhile;
         wp_reset_postdata();
-        wp_reset_query();
     endif;
 
 
@@ -656,7 +653,7 @@ function team_cron_reset_migrate()
 function team_import_xml_layouts()
 {
 
-    $ajax_nonce = isset($_POST['ajax_nonce']) ? sanitize_text_field($_POST['ajax_nonce']) : '';
+    $ajax_nonce = isset($_POST['ajax_nonce']) ? sanitize_text_field(wp_unslash($_POST['ajax_nonce'])) : '';
 
     if (!wp_verify_nonce($ajax_nonce, 'team_ajax_nonce')) return;
     if (!current_user_can('manage_options')) return;
@@ -665,7 +662,7 @@ function team_import_xml_layouts()
 
     $response = array();
     $user_id = get_current_user_id();
-    $source = sanitize_text_field($_POST['source']);
+    $source = isset($_POST['source']) ? sanitize_text_field(wp_unslash($_POST['source'])) : '';
     //$xml_source = 'http://localhost/wp/wp-content/plugins/team/sample-data/team-layouts.json';
 
 

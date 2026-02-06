@@ -20,8 +20,8 @@ function team_member_metabox_content_general($post_id){
 
     ?>
     <div class="section">
-        <div class="section-title"><?php echo __('General', 'team'); ?></div>
-        <p class="description section-description"><?php echo __('Choose some general settings.', 'team'); ?></p>
+        <div class="section-title"><?php echo esc_html__('General', 'team'); ?></div>
+        <p class="description section-description"><?php echo esc_html__('Choose some general settings.', 'team'); ?></p>
 
 
         <?php
@@ -62,6 +62,7 @@ function team_member_metabox_content_general($post_id){
         $args = array(
             'id'		=> 'team_member_meta_fields',
             'title'		=> __('Meta fields','team'),
+/* translators: URL */
             'details'	=> sprintf(__('Customize meta fields. you can customize meta fields here on <a href="%s">setting page</a>','team'), admin_url().'edit.php?post_type=team&page=settings'),
             'type'		=> 'option_group',
             'options'		=> $input_fields,
@@ -101,8 +102,8 @@ function team_member_metabox_content_social($post_id){
 
     ?>
     <div class="section">
-        <div class="section-title"><?php echo __('Social', 'team'); ?></div>
-        <p class="description section-description"><?php echo __('Fill social & contact list.', 'team'); ?></p>
+        <div class="section-title"><?php echo esc_html__('Social', 'team'); ?></div>
+        <p class="description section-description"><?php echo esc_html__('Fill social & contact list.', 'team'); ?></p>
 
 
         <?php
@@ -162,8 +163,8 @@ function team_member_metabox_content_layouts($post_id){
 
     ?>
     <div class="section">
-        <div class="section-title"><?php echo __('Layouts', 'team'); ?></div>
-        <p class="description section-description"><?php echo __('Choose item layouts.', 'team'); ?></p>
+        <div class="section-title"><?php echo esc_html__('Layouts', 'team'); ?></div>
+        <p class="description section-description"><?php echo esc_html__('Choose item layouts.', 'team'); ?></p>
 
 
         <?php
@@ -236,7 +237,7 @@ add_action('team_member_metabox_save','team_member_metabox_save');
 function team_member_metabox_save($job_id){
 
 
-    $team_member_data = isset($_POST['team_member_data']) ? team_recursive_sanitize_arr($_POST['team_member_data']) : '';
+    $team_member_data = isset($_POST['team_member_data']) ? team_recursive_sanitize_arr(wp_unslash($_POST['team_member_data'])) : '';
     update_post_meta($job_id, 'team_member_data', $team_member_data);
 
 

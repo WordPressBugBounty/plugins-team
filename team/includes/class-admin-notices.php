@@ -31,7 +31,8 @@ class class_team_notices
             <div class="updated notice">
                 <p>
                     <?php
-                    echo sprintf(__('You haven\'t created any layouts, please create first layout or import free layouts, please <a href="%s">click here</a> to go import page', 'team'), admin_url() . 'edit.php?post_type=team&page=settings&tab=help_support')
+/* translators: %s: URL to import page */
+                    echo wp_kses_post(sprintf(esc_html__('You haven\'t created any layouts, please create first layout or import free layouts, please <a href="%s">click here</a> to go import page', 'team'), admin_url() . 'edit.php?post_type=team&page=settings&tab=help_support'))
                     ?>
                 </p>
 
@@ -40,7 +41,7 @@ class class_team_notices
         endif;
 
 
-        echo ob_get_clean();
+        echo wp_kses_post(ob_get_clean());
     }
 
 
@@ -55,7 +56,7 @@ class class_team_notices
         $actionurl = admin_url() . 'edit.php?post_type=team&page=upgrade_status';
         $actionurl = wp_nonce_url($actionurl,  'team_upgrade');
 
-        $nonce = isset($_REQUEST['_wpnonce']) ? sanitize_text_field($_REQUEST['_wpnonce']) : '';
+        $nonce = isset($_REQUEST['_wpnonce']) ? sanitize_text_field(wp_unslash($_REQUEST['_wpnonce'])) : '';
 
         if (wp_verify_nonce($nonce, 'team_upgrade')) {
             $team_plugin_info['team_upgrade'] = 'processing';
@@ -74,7 +75,8 @@ class class_team_notices
             <div class="updated notice">
                 <p>
                     <?php
-                    echo sprintf(__('Data migration required for team plugin, please <a class="button button-primary" href="%s">click to start</a> migration. watch this <a target="_blank" href="%s">video</a> first.', 'team'), $actionurl, $tutorial_link)
+/* translators: 1: Data migration URL 2: Tutorial link */
+                    echo wp_kses_post(sprintf(esc_html__('Data migration required for team plugin, please <a class="button button-primary" href="%1$s">click to start</a> migration. watch this <a target="_blank" href="%2$s">video</a> first.', 'team'), $actionurl, $tutorial_link))
                     ?>
                 </p>
 

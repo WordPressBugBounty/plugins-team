@@ -64,7 +64,7 @@ function team_single_team_member_custom_css($team_member_id)
     <style type="text/css">
         <?php
 
-        echo str_replace('__ID__', 'layout-' . $item_layout_id, $custom_css);
+        echo esc_html(str_replace('__ID__', 'layout-' . $item_layout_id, $custom_css));
 
         ?>
     </style>

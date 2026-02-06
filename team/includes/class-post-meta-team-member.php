@@ -42,6 +42,7 @@ class class_team_post_meta_team_member
 
         $team_member_settings_tab[] = array(
             'id' => 'general',
+/* translators: Icon HTML */
             'title' => sprintf(__('%s General', 'team'), '<i class="fas fa-cog"></i>'),
             'priority' => 1,
             'active' => true,
@@ -49,6 +50,7 @@ class class_team_post_meta_team_member
 
         $team_member_settings_tab[] = array(
             'id' => 'social',
+/* translators: Icon HTML */
             'title' => sprintf(__('%s Social', 'team'), '<i class="fas fa-share-alt"></i>'),
             'priority' => 2,
             'active' => false,
@@ -56,6 +58,7 @@ class class_team_post_meta_team_member
 
         $team_member_settings_tab[] = array(
             'id' => 'layouts',
+/* translators: Icon HTML */
             'title' => sprintf(__('%s Layouts', 'team'), '<i class="fas fa-qrcode"></i>'),
             'priority' => 3,
             'active' => false,
@@ -143,7 +146,7 @@ class class_team_post_meta_team_member
         if (!isset($_POST['team_nonce_check_value']))
             return $post_id;
 
-        $nonce = sanitize_text_field($_POST['team_nonce_check_value']);
+        $nonce = isset($_POST['team_nonce_check_value']) ? sanitize_text_field(wp_unslash($_POST['team_nonce_check_value'])) : '';
 
         // Verify that the nonce is valid.
         if (!wp_verify_nonce($nonce, 'team_nonce_check'))

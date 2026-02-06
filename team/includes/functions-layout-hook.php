@@ -33,7 +33,7 @@ function layout_elements_option_title($parameters)
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Title', 'team'); ?></span>
+            <span class="expand"><?php echo esc_html__('Title', 'team'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -117,7 +117,7 @@ function layout_elements_option_title($parameters)
 
             ob_start();
             ?>
-            <textarea readonly type="text" onclick="this.select();">.element-<?php echo esc_attr($element_index); ?>{}</textarea>
+            <textarea readonly type="text" onclick="this.select();"><?php echo esc_attr(' .element-' . $element_index); ?>{}</textarea>
             <?php
 
             $html = ob_get_clean();
@@ -202,7 +202,7 @@ function layout_elements_option_thumbnail($parameters)
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Thumbnail', 'team'); ?></span>
+            <span class="expand"><?php echo esc_html__('Thumbnail', 'team'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -297,7 +297,7 @@ function layout_elements_option_thumbnail($parameters)
             ob_start();
             ?>
             <code onclick="this.select()">
-                .element-<?php echo esc_attr($element_index); ?>{}
+                <?php echo esc_attr(' .element-' . $element_index); ?>{}
 
             </code>
             <?php
@@ -375,7 +375,7 @@ function layout_elements_option_content($parameters)
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Content', 'team'); ?></span>
+            <span class="expand"><?php echo esc_html__('Content', 'team'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -519,7 +519,7 @@ function layout_elements_option_content($parameters)
             ob_start();
             ?>
             <code onclick="this.select()">
-                .element-<?php echo esc_attr($element_index); ?>{}
+                <?php echo esc_attr(' .element-' . $element_index); ?>{}
 
             </code>
             <?php
@@ -578,7 +578,7 @@ function layout_elements_option_social($parameters)
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Social', 'team'); ?></span>
+            <span class="expand"><?php echo esc_html__('Social', 'team'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -746,7 +746,7 @@ function layout_elements_option_meta($parameters)
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Meta', 'team'); ?></span>
+            <span class="expand"><?php echo esc_html__('Meta', 'team'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -825,7 +825,7 @@ function layout_elements_option_meta($parameters)
             ob_start();
             ?>
             <code onclick="this.select()">
-                .element-<?php echo esc_attr($element_index); ?>{}
+                <?php echo esc_attr(' .element-' . $element_index); ?>{}
 
             </code>
             <?php
@@ -884,7 +884,7 @@ function layout_elements_option_position($parameters)
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Position', 'team'); ?></span>
+            <span class="expand"><?php echo esc_html__('Position', 'team'); ?></span>
         </div>
         <div class="element-options options">
 
@@ -948,7 +948,7 @@ function layout_elements_option_position($parameters)
             ob_start();
             ?>
             <code onclick="this.select()">
-                .element-<?php echo esc_attr($element_index); ?>{}
+                <?php echo esc_attr(' .element-' . $element_index); ?>{}
 
             </code>
             <?php
@@ -1006,7 +1006,7 @@ function layout_elements_option_wrapper_start($parameters)
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Wrapper start', 'team'); ?></span>
+            <span class="expand"><?php echo esc_html__('Wrapper start', 'team'); ?></span>
 
             <span class="handle-start"><i class="fas fa-level-up-alt"></i></span>
 
@@ -1070,7 +1070,7 @@ function layout_elements_option_wrapper_start($parameters)
             ob_start();
             ?>
             <code onclick="this.select()">
-                .element-<?php echo esc_attr($element_index); ?>{}
+                <?php echo esc_attr(' .element-' . $element_index); ?>{}
 
             </code>
             <?php
@@ -1120,7 +1120,7 @@ function layout_elements_option_wrapper_end($parameters)
             <span class="remove" onclick="jQuery(this).parent().parent().remove()"><i class="fas fa-times"></i></span>
             <span class="sort"><i class="fas fa-sort"></i></span>
 
-            <span class="expand"><?php echo __('Wrapper end', 'team'); ?></span>
+            <span class="expand"><?php echo esc_html__('Wrapper end', 'team'); ?></span>
             <span class="handle-end"><i class="fas fa-level-down-alt"></i></span>
         </div>
         <div class="element-options options">
@@ -1182,14 +1182,14 @@ function team_layout_element_title_text($post_title, $args)
     <?php
     if ($link_to == 'team_member_link'):
     ?>
-        <a href="<?php echo get_permalink($team_member_id); ?>"><?php echo $post_title; ?></a>
+        <a href="<?php echo esc_url(get_permalink($team_member_id)); ?>"><?php echo esc_html($post_title); ?></a>
     <?php
     elseif ($link_to == 'custom_link'):
     ?>
-        <a href="<?php echo $custom_link; ?>"><?php echo $post_title; ?></a>
+        <a href="<?php echo esc_url($custom_link); ?>"><?php echo esc_html($post_title); ?></a>
     <?php
     else:
-        echo $post_title;
+        echo esc_html($post_title);
     endif;
     ?>
 

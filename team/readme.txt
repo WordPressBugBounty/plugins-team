@@ -3,8 +3,8 @@
 	Donate link: https://pickplugins.com/team/?ref=wordpress.org
 	Tags: team, team showcase, members profiles, team members, meet the team page
 	Requires at least: 3.8
-	Tested up to: 6.6
-	Stable tag: 1.22.26
+	Tested up to: 6.9
+	Stable tag: 1.22.28
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,6 +123,13 @@ then paste this shortcode anywhere in your page to display Team gird.
 7. screenshot-7
 
 == Changelog ==
+
+= 1.22.28 =
+* 2025-12-18 fix - Broken style issue fixed.
+
+= 1.22.27 =
+* 2025-12-17 fix - Escaping issue fixed.
+* 2025-12-17 fix - Missing translation text issue fixed.
 
 = 1.22.26 =
 * 2024-10-04 fix - Minor security issue fixed.
