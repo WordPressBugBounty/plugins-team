@@ -3,7 +3,7 @@
 	Donate link: https://pickplugins.com/team/?ref=wordpress.org
 	Tags: team, team showcase, members profiles, team members, meet the team page
 	Requires at least: 3.8
-	Tested up to: 6.9
+	Tested up to: 7.0
 	Stable tag: 1.22.28
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
